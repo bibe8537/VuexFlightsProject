@@ -10,12 +10,13 @@
       <div>
           <button v-on:click="landthisFlight(flight.id)">Start Flight</button>
       </div>
-      <div class='example'></div>
       </div>
     </li>
     </ul>
-    <div v-if="isFlightStarted == true">
+    <div v-if="isFlightStarted == true || isFlightLanded == false">
+      <div class='example'></div>
       <h1>Flight took off</h1>
+      {{changeFlightStatus()}}
     </div>
     <!-- <button v-on:click="reduceFlightTime(2)">Run Flight</button> -->
     </div>
@@ -27,7 +28,8 @@ export default {
   data() {
     return {
       isFlightStarted: false,
-      isFlightLanded: false
+      isFlightLanded: false,
+      flightstatus: ''
     }
   },
  computed: {
@@ -54,6 +56,9 @@ export default {
  landthisFlight(pId){
     this.isFlightStarted = true;
     this.$store.dispatch('flyAFlight', pId); // calls the 'actions' by name .... dispatch , 'amount' is a parameter
+ },
+ changeFlightStatus(){
+   this.isFlightLanded = true;
  }
  }
 }
@@ -70,9 +75,10 @@ export default {
   border: 2px solid #6aeabb
 }
 .example {
-  width: 100px;
-  height: 100px;
-  background-color: red;
+  width: 64px;
+  height: 64px;
+  background-image: url("../assets/flighta.png");
+  background-color: #cccccc00;
   position: relative;
   -webkit-animation-name: example; /* Safari 4.0 - 8.0 */
   -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
@@ -80,13 +86,13 @@ export default {
   animation-duration: 4s;
 }
 @-webkit-keyframes example {
-   0%   {background-color:red; left:0px; top:0px;}
-  100%  {background-color:yellow; left:900px; top:0px;}
+   0%   {background-color:#cccccc00; left:0px; top:0px; background-image: url("../assets/flighta.png")}
+  100%  {background-color:#cccccc00; left:900px; top:0px; background-image: url("../assets/flighta.png")}
 }
 
 /* Standard syntax */
 @keyframes example {
-   0%   {background-color:red; left:0px; top:0px;}
-  100%  {background-color:yellow; left:900px; top:0px;}
+   0%   {background-color:#cccccc00; left:0px; top:0px;background-image: url("../assets/flighta.png")}
+  100%  {background-color:#cccccc00; left:900px; top:0px;background-image: url("../assets/flighta.png")}
 }
 </style>
