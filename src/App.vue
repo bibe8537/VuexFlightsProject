@@ -1,17 +1,28 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="flight">
+    <!-- <CreateFlights v-bind:flights="flightsData"></CreateFlights> -->
+    <CreateFlights></CreateFlights>
+    <show-flights></show-flights>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CreateFlights from './components/CreateFlights.vue'
+import ShowFlights from './components/ShowFlights.vue'
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
+    'CreateFlights': CreateFlights,
+    'show-flights': ShowFlights
+  },
+  name: 'app',
+  data() {
+    return{
+
+    }
   }
 }
 </script>
