@@ -9,9 +9,9 @@ export const store = new Vuex.Store({
     // define data i.e. state here
     state: { 
         flightsData: [
-            {id: 1, name: 'Lufthansa', origin: 'A', destination: 'B', duration: 3, status: 1},
-            {id: 2, name: 'Qatar', origin: 'A', destination: 'B', duration: 2, status: 1},
-            {id: 3, name: 'Ryan', origin: 'B', destination: 'C', duration: 2, status: 1}
+            {id: 8, name: 'Lufthansa', origin: 'A', destination: 'B', duration: 3, status: 1},
+            {id: 9, name: 'Qatar', origin: 'A', destination: 'B', duration: 2, status: 1},
+            {id: 10, name: 'Ryan', origin: 'B', destination: 'C', duration: 2, status: 1}
           ]  
     },
     getters: { // create any kind of manipulation in the components and can be called from any component. 
@@ -26,7 +26,7 @@ export const store = new Vuex.Store({
             }
             });
            return runflights;
-        }
+        },
     },
    mutations: { // manipulate the original store state objects. So if value is changed in one component automatically reflects in other component
        changeFlightDuration: (state, payload) => {
@@ -49,7 +49,19 @@ export const store = new Vuex.Store({
             state.flightsData.filter(flight => {
                 flight.status != 0;
                })
+        },
+        newFlightAdding: state => { // creates random flights
+            var dummyFlight = {
+                id: Math.floor(Math.random()* Math.floor(6)),
+                name: 'Lufthansa'+ Math.floor(Math.random() * (8 - 2) + 2),
+                origin: 'S',
+                destination: 'D',
+                duration: Math.floor(Math.random() * (8 - 2) + 2),
+                status: 1
+            }
+        return state.flightsData.push(dummyFlight);
         }
+
     },
     actions: { // use for doing any kind of mutation. ASYNC functions should always be created under 'actions'
         reduceDuration: (context, payload) => { // context also represents the 'state', payload is a parameter value that comes from component where we pass some value

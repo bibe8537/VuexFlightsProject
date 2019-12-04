@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img alt="Vue logo" src="./assets/plane.png">
     <div class="flight">
     <!-- <CreateFlights v-bind:flights="flightsData"></CreateFlights> -->
-    <CreateFlights></CreateFlights>
+    <OperateFlights></OperateFlights>
     <show-flights></show-flights>
     </div>
   </div>
 </template>
 
 <script>
-import CreateFlights from './components/CreateFlights.vue'
+import OperateFlights from './components/OperateFlights.vue'
 import ShowFlights from './components/ShowFlights.vue'
 
 export default {
   components: {
-    'CreateFlights': CreateFlights,
+    'OperateFlights': OperateFlights,
     'show-flights': ShowFlights
   },
   name: 'app',
