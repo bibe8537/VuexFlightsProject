@@ -11,6 +11,12 @@
         <button class='create' v-on:click="createNewFlights()">Create New Flight</button>
       </div>
     </div>
+  <div>
+    <h3>Flight already flown</h3>
+    <div v-for="flight in flightHistory" :key="flight.id">
+    <p>{{ flight.name }} and id: {{ flight.id }}</p>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -31,15 +37,18 @@ export default {
       return this.$store.getters.newFlights; // access the getter method in store and manipulate data if needed
     },
 
+    flightHistory(){
+      return this.$store.state.flightHistory;
+    },
     ...mapGetters([
       // calling mapGetters for few getters together
       "newFlights" // name of the getter method
     ]),
 
-    fetchedNewFlights() {
+    //fetchedNewFlights() {
       // this is a mutation as we are adding new flight globally
-      return this.$store.getters.createNewFlights;
-    }
+      //return this.$store.getters.createNewFlights;
+   // }
   },
   methods: {
     createNewFlights() {

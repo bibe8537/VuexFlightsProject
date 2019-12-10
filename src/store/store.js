@@ -12,7 +12,10 @@ export const store = new Vuex.Store({
             {id: 8, name: 'Lufthansa', origin: 'A', destination: 'B', duration: 3, status: 1},
             {id: 9, name: 'Qatar', origin: 'A', destination: 'B', duration: 2, status: 1},
             {id: 10, name: 'Ryan', origin: 'B', destination: 'C', duration: 2, status: 1}
-          ]  
+          ]  ,
+        flightHistory: [
+              {id: 8, name: 'Lufthansa', origin: 'A', destination: 'B', duration: 3, status: 0},
+        ]
     },
     getters: { // create any kind of manipulation in the components and can be called from any component. 
         // But store state original data is not changed. change in one component does not affect the other.
@@ -27,6 +30,9 @@ export const store = new Vuex.Store({
             });
            return runflights;
         },
+        // getFlightHistory: state => {
+        //     var flightHistory = state.flightHistory.map()
+        // }
     },
    mutations: { // manipulate the original store state objects. So if value is changed in one component automatically reflects in other component
        changeFlightDuration: (state, payload) => {
@@ -42,6 +48,7 @@ export const store = new Vuex.Store({
                 if(flight.id == payload){
                     flight.duration = 0;
                     flight.status = 0;
+                    state.flightHistory.push(flight);
                 }
             })
         },
