@@ -58,9 +58,10 @@ export const store = new Vuex.Store({
                })
         },
         newFlightAdding: state => { // creates random flights
+            var flightnames = ['Lufthansa', 'Ryan', 'Qatar', 'Air India', 'Oman']
             var dummyFlight = {
                 id: Math.floor(Math.random()* Math.floor(6)),
-                name: 'Lufthansa'+ Math.floor(Math.random() * (8 - 2) + 2),
+                name: flightnames[Math.floor(Math.random()* Math.floor(5))]+ Math.floor(Math.random() * (8 - 2) + 2),
                 origin: 'S',
                 destination: 'D',
                 duration: Math.floor(Math.random() * (8 - 2) + 2),
